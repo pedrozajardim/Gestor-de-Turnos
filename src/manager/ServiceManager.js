@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-class serviceManager {
+class ServiceManager {
     constructor() {
         this.services = [];
     }
@@ -9,22 +9,25 @@ class serviceManager {
         return this.services;
     }
 
-    getServicesById(id) {
+    getServiceById(id) {
         return this.services.find(service => service.id === id);
     }
 
-    addServicesData(name, description, price, avaitable) {
+    addService(name, description, price, available) {
         const newService = {
-            id: crypto.randomUUID(), name, description, price, avaitable
+            id: crypto.randomUUID(), name, description, price, available
         };
         this.services.push(newService);
         return newService;
     }
 
-    updateService(updateData) {
-        const service = this.getServicesById;
+    updateService(id) {
+        const service = this.getServiceById(id);
         if (!service) { return null; }
-        service.name = updateData.name ?? service.name;
+        service.name = service.name ?? service.name;
+        service.description = service.description ?? service.description;
+        service.price = service.price ?? service.price;
+        service.available = service.available ?? service.available;
         return service
     }
 

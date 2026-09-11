@@ -1,2 +1,19 @@
 # Gestor de Turnos y Reservas
-    Es un proyecto en el que trabajaremos el backen de turnos y reservas de un producto
+API para la gestión de turnos y reservas, pensada para una sala de grooming. Permite administrar los servicios disponibles (baño, corte, etc.) y gestionar las reservas de los clientes.
+
+
+# Tecnologías
+Node.js
+Dotenv
+
+# Ejecución
+Para ejecutar la base que esta en server.js hay que plantarse allí en la terminal y la mostrara
+
+# Service
+La class ServiceManager cuensta con 5 fuciones para manejar la base de server:
+
+1. getService: te trae todo el array de services.
+2. getServiceById: trae el servicio especifico que consiga con el id que concida con el que le demos.
+3. addService: crea un nuevo service.
+4. updateService: nos permite modificar un service ya creado, se selecciona por medi de su id.
+5. deleteService: elimina el service seleccionado por medio del name.
