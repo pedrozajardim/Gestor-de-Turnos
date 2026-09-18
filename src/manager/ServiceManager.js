@@ -13,27 +13,29 @@ class ServiceManager {
         return this.services.find(service => service.id === id);
     }
 
-    addService(name, description, price, available) {
+    addService({ name, description, duration, price, category, available }) {
         const newService = {
-            id: crypto.randomUUID(), name, description, price, available
+            id: crypto.randomUUID(), name, description, duration, price, category, available
         };
         this.services.push(newService);
         return newService;
     }
 
-    updateService(id) {
+    updateService(id, data) {
         const service = this.getServiceById(id);
         if (!service) { return null; }
-        service.name = service.name ?? service.name;
-        service.description = service.description ?? service.description;
-        service.price = service.price ?? service.price;
-        service.available = service.available ?? service.available;
-        return service
+        service.name = data.name ?? service.name;
+        service.description = data.description ?? service.description;
+        service.duration = data.duration ?? service.duration;
+        service.price = data.price ?? service.price;
+        service.category = data.category ?? service.category;
+        service.available = data.available ?? service.available;
+        return service;
     }
 
-    deleteService(name) {
-        const index = this.service.findIndex(service => service.name === name);
-        if (index === -1) { return null };
+    deleteService(id) {
+        const index = this.services.findIndex(service => service.id === id);
+        if (index === -1) { return null; }
         return this.services.splice(index, 1)[0];
     }
 }

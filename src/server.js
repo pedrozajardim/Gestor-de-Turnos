@@ -1,5 +1,7 @@
-import ServiceManager from "./manager/ServiceManager.js";
+import app from "./app.js"
+import envConfig from "./config/env.config.js"
 
-const Servicios = new ServiceManager();
-const ver = Servicios.addService("jesus","clinico",1555,true);
-console.log(ver)
+
+app.listen(envConfig.PORT, () => {
+    console.log(`Servidor Corriendo en puerto ${envConfig.PORT}`);
+})
