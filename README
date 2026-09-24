@@ -19,6 +19,10 @@ La class ServiceManager cuenta con 5 fuciones para manejar la base de server:
 4. updateService: nos permite modificar un service ya creado, se selecciona por medio de su id.
 5. deleteService: elimina el service seleccionado por medio del name.
 
+# Booking
+Maneja las reservas
+
 # Intalacion
 npm run dev en la terminal
 http://localhost:3000/api/services
+http://localhost:3000/api/bookings
