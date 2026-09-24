@@ -1,0 +1,20 @@
+[
+  {
+    "id": "857c4cdc-ac60-4d30-9c28-b88742036fdd",
+    "name": "Baño Simple",
+    "description": "El baño simple, se realiza con un champú a base de avena, se hacen 2 pasdas de limpieza para que el manto y la piel queden limpias.",
+    "duration": "1 hora",
+    "price": "25 soles",
+    "category": "Estetica",
+    "available": true
+  },
+  {
+    "id": "1411dd91-ab42-4f91-8fbe-6b4883dbd40b",
+    "name": "Baño Medicado",
+    "description": "El baño medicado, se realiza con un champú a base de avena, se hacen 1 pasadas de limpieza para que el manto y la piel queden limpias y después se hace un baño con el champú medicado recetado por el dr.Veterinario y se deja actuar por 5 minutos",
+    "duration": "1/2 hora",
+    "price": "35 soles",
+    "category": "Estetica",
+    "available": true
+  }
+]

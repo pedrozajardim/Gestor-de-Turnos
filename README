@@ -5,6 +5,7 @@ API para la gestión de turnos y reservas, pensada para una sala de grooming. Pe
 # Tecnologías
 Node.js
 Dotenv
+Express
 
 # Ejecución
 Para ejecutar la base que esta en server.js hay que plantarce allí en la terminal y la mostrara.
@@ -20,3 +21,4 @@ La class ServiceManager cuenta con 5 fuciones para manejar la base de server:
 
 # Intalacion
 npm run dev en la terminal
+http://localhost:3000/api/services

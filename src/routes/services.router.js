@@ -1,9 +1,9 @@
-import ServiceManager from "../manager/ServiceManager.js"
+import ServiceManager from "../managers/ServiceManager.js"
 import { Router } from "express"
 
 const router = Router();
 
-const serviceManager = new ServiceManager()
+const serviceManager = new ServiceManager("./src/data/services.json")
 
 router.get("/", async (req, res) => {
     try {
@@ -19,8 +19,7 @@ router.get("/", async (req, res) => {
         res.status(200).json(services);
     }
     catch (error) {
-        console.log(error)
-        res.status(500).json({ message: "Error al obtener los servicios" })
+        res.status(500).json({ message: "Error al obtener todos los servicios" })
     }
 })
 
@@ -47,11 +46,11 @@ router.post("/", async (req, res) => {
             return res.status(400).json({ error: "Faltan campos por llenar" })
         }
         const newService = await serviceManager.addService({ name, description, duration, price, category, available });
-        res.status(201).json(newService)
+        res.status(201).json({messagge:"servicio creado", newService})
     }
     catch (error) {
         console.log(error)
-        res.status(500).json({ message: "Error al obtener el servicio" })
+        res.status(500).json({ message: "Error al querer crear el servicio" })
     }
 })
 
@@ -69,7 +68,7 @@ router.put("/:sid", async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.status(500).json({ message: "Error al obtener el servicio" })
+        res.status(500).json({ message: "Error al querer modificar el servicio" })
     }
 })
 
@@ -85,7 +84,7 @@ router.delete("/:sid", async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.status(500).json({ message: "Error al obtener el servicio" })
+        res.status(500).json({ message: "Error al querer eliminar el servicio" })
     }
 })
 
