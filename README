@@ -20,7 +20,7 @@ La class ServiceManager cuenta con 5 fuciones para manejar la base de server:
 5. deleteService: elimina el service seleccionado por medio del name.
 
 # Booking
-Maneja las reservas
+
 
 # Intalacion
 npm run dev en la terminal
