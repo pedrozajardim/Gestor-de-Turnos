@@ -1,4 +1,3 @@
-import { error } from 'console'
 import crypto from 'crypto'
 import fs from 'fs/promises'
 
@@ -7,12 +6,12 @@ class ServiceManager {
         this.path = path
     }
 
-    async #readServices(){
+    async #readServices() {
         const data = await fs.readFile(this.path, "utf-8")
         return JSON.parse(data)
     }
 
-    async #writeServices(services){
+    async #writeServices(services) {
         await fs.writeFile(this.path, JSON.stringify(services, null, 2))
     }
 
@@ -36,22 +35,28 @@ class ServiceManager {
     }
 
     async updateService(id, data) {
-        const service = await this.#readServices();
-        const index = service.findIndex(s => s.id === id);
-        if(index === -1){return null}
-        service[index] = {
-            ...service[index],
-            ...data
-        }
-        await this.#writeServices(service)
-        return service
+        const services = await this.#readServices();
+
+        const index = services.findIndex(s => s.id === id);
+        if (index === -1) return null;
+
+        services[index] = { ...services[index], ...data };
+
+        await this.#writeServices(services);
+        return services[index];
     }
 
     async deleteService(id) {
         const services = await this.#readServices();
         const index = services.findIndex(service => service.id === id);
         if (index === -1) { return null; }
-        return services.splice(index, 1)[0];
+
+        const [deletedService] = services.splice(index, 1);
+
+
+        await this.#writeServices(services);
+
+        return deletedService;
     }
 }
 

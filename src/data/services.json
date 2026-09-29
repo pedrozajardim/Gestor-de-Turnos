@@ -16,5 +16,14 @@
     "price": "35 soles",
     "category": "Estetica",
     "available": true
+  },
+  {
+    "id": "8311c89d-8b83-4827-9b1c-eeeb80fd737f",
+    "name": "Corte de pelo",
+    "description": "Cortado del pelo",
+    "duration": "45 minutos",
+    "price": "20 soles",
+    "category": "Estetica",
+    "available": true
   }
 ]

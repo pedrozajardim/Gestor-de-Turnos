@@ -22,6 +22,9 @@ La class ServiceManager cuenta con 5 fuciones para manejar la base de server:
 # Booking
 
 
+//falta explicar
+
+
 # Intalacion
 npm run dev en la terminal
 http://localhost:3000/api/services
