@@ -1,21 +1,18 @@
-import BookingManager from "../managers/BookingManager.js";
-import ServiceManager from "../managers/ServiceManager.js";
+import BookingsService from "../services/bookings.service.js";
 
-const serviceManager = new ServiceManager("./src/data/services.json")
-const bookingManager = new BookingManager("./src/data/bookings.json")
+const bookingsService = new BookingsService()
 
 class BookingController {
 
     static async createBooking(req, res) {
         try {
-            const { clientName, clientEmail, date, time, services } = req.body
+            const booking = await bookingsService.createBooking(req.body);
+            res.status(201).json(booking);
 
-            if (!clientName || !clientEmail || !date || !time) {
-                return res.status(400).json({ error: "Faltan campos obligatorios" })
-            }
-            const booking = await bookingManager.createBooking({ clientName, clientEmail, date, time, services })
-            res.status(201).json(booking)
         } catch (error) {
+            if (error.message === "Faltan campos por llenar") {
+                return res.status(400).json({ error: error.message })
+            }
             console.log(error)
             res.status(500).json({ error: "error al querer crear una reserva" })
         }
@@ -23,12 +20,13 @@ class BookingController {
 
     static async getBookingById(req, res) {
         try {
-            const booking = await bookingManager.getBookingById(req.params.bid)
-            if (!booking) {
-                return res.status(404).json({ error: 'reserva no encontrada' })
-            }
+            const booking = await bookingsService.getBookingById(req.params.bid)
             res.status(200).json(booking)
         } catch (error) {
+            if (error.message === "Reserva no encontrada, revise si el id esta mal escrito.") {
+                return res.status(404).json({ error: error.message })
+            }
+            console.log(error)
             res.status(500).json({ error: "error al querer encontrar una reserva" })
         }
     }
@@ -36,17 +34,15 @@ class BookingController {
     static async addServiceToBooking(req, res) {
         try {
             const { bid, sid } = req.params;
-
-            const service = await serviceManager.getServiceById(sid)
-            if (!service) {
-                return res.status(404).json({ error: "Servicio no encontrado" });
-            }
-            const booking = await bookingManager.addServiceToBooking(bid, sid);
-            if (!booking) {
-                return res.status(404).json({ error: "Reserva o servicio no encontrado" });
-            }
+            const booking = await bookingsService.addServiceToBooking(bid, sid);
             res.status(200).json(booking);
         } catch (error) {
+            if(error.message === "Servicio no encontrado, revise si el id de service esta mal escrito."||
+                error.message === "Reserva no encontrada, revise si el id de booking esta mal escrito."
+            ){
+                return res.status(404).json({error: error.message})
+            }
+            console.log(error)
             res.status(500).json({ error: "error al querer agregar una reserva" })
         }
     }

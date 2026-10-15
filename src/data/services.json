@@ -25,5 +25,22 @@
     "price": "20 soles",
     "category": "Estetica",
     "available": true
+  },
+  {
+    "id": "070afc9b-89c3-4e71-840e-e25aacec624c",
+    "name": "Corte de Uñas",
+    "description": "Corte y limado de uñas.",
+    "duration": "5 minutos",
+    "price": "10 soles",
+    "category": "Estetica",
+    "available": true
+  },
+  {
+    "id": "c86aa059-d069-4419-805e-1a038bc165b2",
+    "name": "Corte de Uñas",
+    "description": "Corte y limado de uñas.",
+    "duration": "5 minutos",
+    "price": "10 soles",
+    "category": "Estetica"
   }
 ]

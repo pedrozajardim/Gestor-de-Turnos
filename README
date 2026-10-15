@@ -10,8 +10,9 @@ Express
 # Ejecución
 Para ejecutar la base que esta en server.js hay que plantarce allí en la terminal y la mostrara.
 
+
 # Service
-La class ServiceManager cuenta con 5 fuciones para manejar la base de server:
+servicesService cuenta con 5 fuciones 
 
 1. getServices: te trae todo el array de service.
 2. getServiceById: trae el servicio especifico que consiga con el id que concida con el que le demos.
@@ -20,12 +21,21 @@ La class ServiceManager cuenta con 5 fuciones para manejar la base de server:
 5. deleteService: elimina el service seleccionado por medio del name.
 
 # Booking
+ BookingsService cuenta con 3 funciones
+
+1. createBooking: crea una reserva del cliente.
+2. getBookingById: busca una reserva especifica por medio del id.
+3. addServiceToBooking: agrega un servicio a una reserva que ya existe.
 
 
-//falta explicar
+# Refactorización
 
+ Se refactorizo el proyecto, eliminando seviceManager y repartiedno en capaz sus tareas, en este momento tiene este orden:
+
+ router → controller → service → repository → DAO → archivo JSON
 
 # Intalacion
 npm run dev en la terminal
+para prueba:
 http://localhost:3000/api/services
 http://localhost:3000/api/bookings

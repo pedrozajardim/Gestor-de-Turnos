@@ -1,8 +1,9 @@
-import crypto from 'crypto'
 import fs from 'fs/promises'
+import crypto from 'crypto'
 
-class ServiceManager {
-    constructor(path) {
+
+class ServicesDao {
+    constructor(path = ("./src/data/services.json")) {
         this.path = path
     }
 
@@ -15,26 +16,24 @@ class ServiceManager {
         await fs.writeFile(this.path, JSON.stringify(services, null, 2))
     }
 
-    async getServices() {
+    async getAll() {
         return await this.#readServices();
     }
 
-    async getServiceById(id) {
+    async getById(id) {
         const services = await this.#readServices();
         return services.find(service => service.id === id);
     }
 
-    async addService({ name, description, duration, price, category, available }) {
+    async create(data) {
         const services = await this.#readServices();
-        const newService = {
-            id: crypto.randomUUID(), name, description, duration, price, category, available
-        };
+        const newService = { id: crypto.randomUUID(), ...data };
         services.push(newService)
         await this.#writeServices(services)
         return newService;
     }
 
-    async updateService(id, data) {
+    async update(id, data) {
         const services = await this.#readServices();
 
         const index = services.findIndex(s => s.id === id);
@@ -46,7 +45,7 @@ class ServiceManager {
         return services[index];
     }
 
-    async deleteService(id) {
+    async delete(id) {
         const services = await this.#readServices();
         const index = services.findIndex(service => service.id === id);
         if (index === -1) { return null; }
@@ -58,6 +57,7 @@ class ServiceManager {
 
         return deletedService;
     }
+
 }
 
-export default ServiceManager;
+export default ServicesDao
