@@ -15,7 +15,7 @@ class BookingsService {
     async createBooking(data) {
         const { clientName, clientEmail, date, time } = data || {};
 
-        if (!clientName, !clientEmail, !date, !time) {
+        if (!clientName|| !clientEmail|| !date|| !time) {
             throw new Error("Faltan campos por llenar")
         }
         return await this.repository.create({
@@ -46,7 +46,7 @@ class BookingsService {
         if (!service) {
             throw new Error("Servicio no encontrado, revise si el id de service esta mal escrito.");
         }
-        const existingService = booking.services.find(s => s.service === sid)
+        const existingService = booking.services.find(s => String(s.service) === sid)
 
         if (existingService) {
             existingService.quantity += 1;

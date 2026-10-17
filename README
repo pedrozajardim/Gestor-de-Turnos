@@ -6,6 +6,7 @@ API para la gestión de turnos y reservas, pensada para una sala de grooming. Pe
 Node.js
 Dotenv
 Express
+Moongose
 
 # Ejecución
 Para ejecutar la base que esta en server.js hay que plantarce allí en la terminal y la mostrara.
@@ -30,7 +31,7 @@ servicesService cuenta con 5 fuciones
 
 # Refactorización
 
- Se refactorizo el proyecto, eliminando seviceManager y repartiedno en capaz sus tareas, en este momento tiene este orden:
+ Se refactorizo el proyecto, eliminando seviceManager y repartiendo en capaz sus tareas, en este momento tiene este orden:
 
  router → controller → service → repository → DAO → archivo JSON
 

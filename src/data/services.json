@@ -4,7 +4,7 @@
     "name": "Baño Simple",
     "description": "El baño simple, se realiza con un champú a base de avena, se hacen 2 pasdas de limpieza para que el manto y la piel queden limpias.",
     "duration": "1 hora",
-    "price": "25 soles",
+    "price": 25,
     "category": "Estetica",
     "available": true
   },
@@ -13,7 +13,7 @@
     "name": "Baño Medicado",
     "description": "El baño medicado, se realiza con un champú a base de avena, se hacen 1 pasadas de limpieza para que el manto y la piel queden limpias y después se hace un baño con el champú medicado recetado por el dr.Veterinario y se deja actuar por 5 minutos",
     "duration": "1/2 hora",
-    "price": "35 soles",
+    "price": 35,
     "category": "Estetica",
     "available": true
   },
@@ -22,7 +22,7 @@
     "name": "Corte de pelo",
     "description": "Cortado del pelo",
     "duration": "45 minutos",
-    "price": "20 soles",
+    "price": 20,
     "category": "Estetica",
     "available": true
   },
@@ -31,7 +31,7 @@
     "name": "Corte de Uñas",
     "description": "Corte y limado de uñas.",
     "duration": "5 minutos",
-    "price": "10 soles",
+    "price": 10,
     "category": "Estetica",
     "available": true
   },
@@ -40,7 +40,7 @@
     "name": "Corte de Uñas",
     "description": "Corte y limado de uñas.",
     "duration": "5 minutos",
-    "price": "10 soles",
+    "price": 10,
     "category": "Estetica"
   }
 ]

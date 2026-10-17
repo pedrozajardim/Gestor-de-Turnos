@@ -48,7 +48,7 @@ class serviceController {
     static async updateService(req, res) {
         try {
             const { sid } = req.params
-            const { id, ...updates } = req.body
+            const { id, _id, ...updates } = req.body;
 
             const updatedService = await servicesService.updateService(sid, updates)
 
