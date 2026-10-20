@@ -4,11 +4,11 @@ const bookingsService = new BookingsService()
 
 class BookingController {
 
-    static async getBookings(req,res){
+    static async getBookings(req, res) {
         try {
             const bookings = await bookingsService.getBookings(req.query);
             res.status(200).json(bookings)
-        } catch (error){
+        } catch (error) {
             res.status(500).json({ error: "error al querer mostrar las reservas" })
         }
     }
@@ -16,7 +16,7 @@ class BookingController {
     static async createBooking(req, res) {
         try {
             const booking = await bookingsService.createBooking(req.body);
-            req.app.get("io").emit("booking:created", booking); 
+            req.app.get("io").emit("booking:created", booking);
             res.status(201).json(booking);
 
         } catch (error) {
@@ -47,10 +47,10 @@ class BookingController {
             const booking = await bookingsService.addServiceToBooking(bid, sid);
             res.status(200).json(booking);
         } catch (error) {
-            if(error.message === "Servicio no encontrado, revise si el id de service esta mal escrito."||
+            if (error.message === "Servicio no encontrado, revise si el id de service esta mal escrito." ||
                 error.message === "Reserva no encontrada, revise si el id de booking esta mal escrito."
-            ){
-                return res.status(404).json({error: error.message})
+            ) {
+                return res.status(404).json({ error: error.message })
             }
             console.log(error)
             res.status(500).json({ error: "error al querer agregar una reserva" })

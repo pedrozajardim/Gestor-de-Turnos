@@ -10,12 +10,16 @@ class ServicesRepository {
         return await this.dao.getAll();
     }
 
+    async getPaginated(params) {
+        return await this.dao.getPaginated(params);
+    }
+
     async getById(id) {
         return await this.dao.getById(id);
     }
 
     async create(data) {
-        return await this.dao.create(data)
+        return await this.dao.create(data);
     }
 
     async update(id, data) {

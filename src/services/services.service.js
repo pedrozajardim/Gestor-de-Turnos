@@ -7,15 +7,23 @@ class ServicesService {
         this.repository = repository
     }
 
-    async getServices({ category, available } = {}) {
-        let services = await this.repository.getAll()
-        if (category) {
-            services = services.filter(s => s.category === category);
-        }
-        if (available !== undefined) {
-            services = services.filter(s => s.available === (available === "true"));
-        }
-        return services;
+    async getAll({ category, available, page, limit, sortBy, order }) {
+        const filter = {};
+        if (category) filter.category = category;
+        if (available !== undefined) filter.available = available;
+
+        const { docs, total } = await this.repository.getPaginated({ filter, page, limit, sortBy, order });
+        const totalPages = Math.max(1, Math.ceil(total / limit));
+
+        return {
+            services: docs,
+            total,
+            page,
+            limit,
+            totalPages,
+            hasPrevPage: page > 1,
+            hasNextPage: page < totalPages,
+        };
     }
 
     async getServiceById(id) {
@@ -35,12 +43,12 @@ class ServicesService {
         if (price < 0) {
             throw new Error("Hay que corregir el precio, no puede ser negativo")
         }
-        return this.repository.create({ name, description, duration, price, category })
+        return this.repository.create({ name, description, duration, price, category, available })
     }
 
     async updateService(id, data) {
         const service = await this.repository.update(id, data)
-        if(!service){
+        if (!service) {
             throw new Error("Servicio no encontrado")
         }
         return service
@@ -48,7 +56,7 @@ class ServicesService {
 
     async deleteService(id) {
         const service = await this.repository.delete(id)
-        if(!service){
+        if (!service) {
             throw new Error("Servicio no encontrado")
         }
         return service

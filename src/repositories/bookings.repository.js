@@ -16,7 +16,13 @@ class BookingRepository {
     }
     async update(bid,data) {
         return await this.dao.update(bid,data);
+
     }
+
+    async getByIdPopulated(id) {
+    return await this.dao.getByIdPopulated(id);
+}
+
 }
 
 export default BookingRepository

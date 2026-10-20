@@ -7,6 +7,18 @@ class ServicesDao {
         return await ServicesModel.find();
     }
 
+    async getPaginated({ filter, page, limit, sortBy, order }) {
+        const [docs, total] = await Promise.all([
+            ServicesModel.find(filter)
+                .sort({ [sortBy]: order === "asc" ? 1 : -1 })
+                .skip((page - 1) * limit)
+                .limit(limit)
+                .lean(),
+            ServicesModel.countDocuments(filter),
+        ]);
+        return { docs, total };
+    }
+
     async getById(id) {
         return await ServicesModel.findById(id);
     }

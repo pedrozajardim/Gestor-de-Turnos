@@ -5,10 +5,11 @@ const servicesService = new ServicesService();
 class serviceController {
     static async getServices(req, res) {
         try {
-            const services = await servicesService.getServices(req.query);
+            const services = await servicesService.getAll(req.validated.query);
             res.status(200).json(services);
         }
         catch (error) {
+            console.log(error)
             res.status(500).json({ message: "Error al obtener todos los servicios" })
         }
     }
@@ -69,7 +70,7 @@ class serviceController {
     static async deleteService(req, res) {
         try {
             const { sid } = req.params;
-            const deleteService = await servicesService.deleteService(sid)
+            await servicesService.deleteService(sid)
             res.status(200).json({ message: "Servicio Eliminado" })
         }
         catch (error) {

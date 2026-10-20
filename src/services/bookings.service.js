@@ -33,11 +33,11 @@ class BookingsService {
     }
 
     async getBookingById(id) {
-        const booking = await this.repository.getById(id);
+        const booking = await this.repository.getByIdPopulated(id);
         if (!booking) {
-            throw new Error("Reserva no encontrada, revise si el id esta mal escrito.")
+            throw new Error("Reserva no encontrada, revise si el id esta mal escrito.");
         }
-        return booking
+        return booking;
     }
 
     async addServiceToBooking(bid, sid) {
