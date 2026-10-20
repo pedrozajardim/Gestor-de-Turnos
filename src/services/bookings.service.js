@@ -12,10 +12,14 @@ class BookingsService {
     }
 
 
+    async getBookings() {
+        return await this.repository.getAll();
+    }
+
     async createBooking(data) {
         const { clientName, clientEmail, date, time } = data || {};
 
-        if (!clientName|| !clientEmail|| !date|| !time) {
+        if (!clientName || !clientEmail || !date || !time) {
             throw new Error("Faltan campos por llenar")
         }
         return await this.repository.create({

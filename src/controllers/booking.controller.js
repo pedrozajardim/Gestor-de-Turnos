@@ -4,9 +4,19 @@ const bookingsService = new BookingsService()
 
 class BookingController {
 
+    static async getBookings(req,res){
+        try {
+            const bookings = await bookingsService.getBookings(req.query);
+            res.status(200).json(bookings)
+        } catch (error){
+            res.status(500).json({ error: "error al querer mostrar las reservas" })
+        }
+    }
+
     static async createBooking(req, res) {
         try {
             const booking = await bookingsService.createBooking(req.body);
+            req.app.get("io").emit("booking:created", booking); 
             res.status(201).json(booking);
 
         } catch (error) {

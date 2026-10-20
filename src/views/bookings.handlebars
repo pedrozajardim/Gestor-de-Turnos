@@ -1,0 +1,16 @@
+<h1>Reservas</h1>
+<div id="bookings-list">
+    {{#each bookings}}
+    <div class="card">
+        <h3>Cliente: {{this.clientName}}</h3>
+        <p>{{this.clientEmail}}</p>
+        <span>{{this.date}} - {{this.time}}</span>
+        <span>{{this.status}}</span>
+        <ul>
+            {{#each this.services}}
+            <li>{{this.service.name}} x{{this.quantity}}</li>
+            {{/each}}
+        </ul>
+    </div>
+    {{/each}}
+</div>

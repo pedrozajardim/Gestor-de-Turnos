@@ -3,6 +3,7 @@ import {Router } from "express";
 
 const router = Router();
 
+router.get("/", BookingController.getBookings)
 
 router.post("/", BookingController.createBooking)
 

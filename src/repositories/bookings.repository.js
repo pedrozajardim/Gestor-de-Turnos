@@ -5,6 +5,9 @@ class BookingRepository {
         this.dao = dao
     }
 
+    async getAll (){
+        return await this.dao.getAll();
+    }
     async create(data) {
         return await this.dao.create(data);
     }

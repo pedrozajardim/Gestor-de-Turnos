@@ -1,0 +1,12 @@
+<h1>Servicios</h1>
+<div id="services-list">
+    {{#each services}}
+    <div class="card">
+        <h3>{{this.name}}</h3>
+        <p>{{this.description}}</p>
+        <span>{{this.duration}} min - S/ {{this.price}}</span>
+        <span>{{this.category}}</span>
+        <span>{{#if this.available}}Disponible{{else}}No disponible{{/if}}</span>
+    </div>
+    {{/each}}
+</div>
