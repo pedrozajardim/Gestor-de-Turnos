@@ -10,6 +10,9 @@ class ServicesDao {
     async getById(id) {
         return await ServicesModel.findById(id);
     }
+    async getPaginated(filter,option) {
+        return await ServicesModel.paginate(filter,option);
+    }
 
     async create(data) {
         return await ServicesModel.create(data);

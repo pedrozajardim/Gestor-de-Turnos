@@ -2,7 +2,7 @@ import { BookingModel } from "./models/booking.model.js";
 
 class BookingsDao {
 
-    async getAll(){
+    async getAll() {
         return await BookingModel.find();
     }
 
@@ -14,6 +14,9 @@ class BookingsDao {
         return await BookingModel.findById(id);
     }
 
+    async getByIdPopulated(id) {
+        return await BookingModel.findById(id).populate("services.service")
+    }
     async update(id, data) {
         return await BookingModel.findByIdAndUpdate(id, data, { new: true });
     }

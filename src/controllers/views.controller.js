@@ -5,9 +5,9 @@ const servicesService = new ServicesService();
 
 export const renderServices = async (req, res) => {
     try {
-const services = await servicesService.getServices();
-const plainServices = services.map(s => s.toObject ? s.toObject() : s);
-res.render("services", { services: plainServices });
+        const services = await servicesService.getServices();
+        const plainServices = services.map(s => s.toObject ? s.toObject() : s);
+        res.render("services", { services: plainServices });
     } catch (error) {
         console.log(error);
         res.status(500).send("Error al cargar los servicios");

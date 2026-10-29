@@ -14,6 +14,10 @@ class ServicesRepository {
         return await this.dao.getById(id);
     }
 
+    async getPaginated(filter,option){
+        return await this.dao.getPaginated(filter,option)
+    }
+
     async create(data) {
         return await this.dao.create(data)
     }
